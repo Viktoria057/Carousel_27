@@ -1,0 +1,162 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at 20% 20%, #0f2027, #203a43, #2c5364);
+    overflow: hidden;
+}
+
+
+.carousel {
+    position: relative;
+    width: 900px;
+    height: 550px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    background: #000;
+}
+
+.slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    opacity: 0;
+    transform: scale(1.1);
+    filter: brightness(0.85);
+    transition: opacity 1s ease, transform 1s ease, filter 1s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+    z-index: 2;
+}
+
+
+.slide:nth-of-type(1) { background: linear-gradient(135deg, #f85032, #e73827); }
+.slide:nth-of-type(2) { background: linear-gradient(135deg, #43cea2, #185a9d); }
+.slide:nth-of-type(3) { background: linear-gradient(135deg, #ffb75e, #ed8f03); }
+.slide:nth-of-type(4) { background: linear-gradient(135deg, #614385, #516395); }
+.slide:nth-of-type(5) { background: linear-gradient(135deg, #02aab0, #00cdac); }
+
+
+#controls-container {
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+    padding: 12px 20px;
+    border-radius: 35px;
+    border: 2px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 0 30px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+.controls {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+
+.controls:hover {
+    background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.15));
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 15px rgba(255,255,255,0.2);
+    color: #3d6868;
+}
+
+.controls:active {
+    transform: translateY(1px) scale(0.95);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    color: #fff;
+}
+
+
+.indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.4);
+}
+
+.indicator.active {
+    background: #fff;
+    transform: scale(1.7);
+}
+
+
+@media (max-width: 700px) {
+    .carousel {
+        width: 90%;
+        height: 250px;
+    }
+
+    .slide {
+        font-size: 1.5rem;
+    }
+
+    #controls-container {
+        bottom: 35px;
+        gap: 12px;
+        padding: 8px 15px;
+    }
+
+    .controls {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+    }
+
+    .indicators {
+        bottom: 15px;
+    }
+}
